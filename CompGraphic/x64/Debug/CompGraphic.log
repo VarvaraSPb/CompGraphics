@@ -1,0 +1,10 @@
+﻿  main.cpp
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(27,15): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(51,20): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(52,20): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(53,20): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(54,20): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+  model.cpp
+  tgaimage.cpp
+  Создание кода...
+  CompGraphic.vcxproj -> C:\Users\Варя\source\repos\CompGraphic\x64\Debug\CompGraphic.exe
