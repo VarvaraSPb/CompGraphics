@@ -1,8 +1,9 @@
 #ifndef __IMAGE_H__
 #define __IMAGE_H__
-#include <fstream>
-#pragma pack(push,1)
 
+#include <fstream>
+
+#pragma pack(push,1)
 struct TGA_Header {
 	char idlength;
 	char colormaptype;
@@ -18,6 +19,8 @@ struct TGA_Header {
 	char  imagedescriptor;
 };
 #pragma pack(pop)
+
+
 
 struct TGAColor {
 	union {
@@ -55,6 +58,7 @@ struct TGAColor {
 		return *this;
 	}
 };
+
 
 class TGAImage {
 protected:
