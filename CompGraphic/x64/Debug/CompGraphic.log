@@ -1,53 +1,57 @@
 ﻿  main.cpp
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(31,23): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(63,112): warning C4244: аргумент: преобразование "double" в "t", возможна потеря данных
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(63,112): warning C4244:         with
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(63,112): warning C4244:         [
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(63,112): warning C4244:             t=int
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(63,112): warning C4244:         ]
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(63,87): warning C4244: аргумент: преобразование "double" в "t", возможна потеря данных
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(63,87): warning C4244:         with
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(63,87): warning C4244:         [
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(63,87): warning C4244:             t=int
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(63,87): warning C4244:         ]
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(63,61): warning C4244: аргумент: преобразование "double" в "t", возможна потеря данных
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(63,61): warning C4244:         with
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(63,61): warning C4244:         [
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(63,61): warning C4244:             t=int
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(63,61): warning C4244:         ]
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(70,140): warning C4244: аргумент: преобразование "float" в "unsigned char", возможна потеря данных
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(70,123): warning C4244: аргумент: преобразование "float" в "unsigned char", возможна потеря данных
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(70,106): warning C4244: аргумент: преобразование "float" в "unsigned char", возможна потеря данных
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(42,81): warning C4244: аргумент: преобразование "float" в "t", возможна потеря данных
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(42,81): warning C4244:         with
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(42,81): warning C4244:         [
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(42,81): warning C4244:             t=int
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(42,81): warning C4244:         ]
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(28,15): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(65,23): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(99,83): warning C4244: аргумент: преобразование "double" в "t", возможна потеря данных
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(99,83): warning C4244:         with
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(99,83): warning C4244:         [
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(99,83): warning C4244:             t=int
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(99,83): warning C4244:         ]
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(99,57): warning C4244: аргумент: преобразование "double" в "t", возможна потеря данных
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(99,57): warning C4244:         with
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(99,57): warning C4244:         [
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(99,57): warning C4244:             t=int
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(99,57): warning C4244:         ]
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(25,74): warning C4244: аргумент: преобразование "float" в "t", возможна потеря данных
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(25,74): warning C4244:         with
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(25,74): warning C4244:         [
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(25,74): warning C4244:             t=int
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(25,74): warning C4244:         ]
   (компиляция исходного файла "main.cpp")
-      C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(42,81):
+      C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(25,74):
       контекст создания экземпляра шаблона (сначала самый старый)
-          C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(55,36):
-          выполняется компиляция ссылки на экземпляр класс шаблон функции "Vec3<int>"
-          C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(42,13):
-          во время компиляции функции-члена класс шаблон "Vec3<int> Vec3<int>::operator *(float) const"
-              C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(27,22):
-              см. первую ссылку на "Vec3<int>::operator *" в "triangle"
+          C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(15,6):
+          выполняется компиляция ссылки на экземпляр класс шаблон функции "Vec2<int>"
+          C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(25,13):
+          во время компиляции функции-члена класс шаблон "Vec2<int> Vec2<int>::operator *(float) const"
+              C:\Users\Варя\source\repos\CompGraphic\CompGraphic\main.cpp(56,22):
+              см. первую ссылку на "Vec2<int>::operator *" в "triangle"
   
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(42,74): warning C4244: аргумент: преобразование "float" в "t", возможна потеря данных
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(42,74): warning C4244:         with
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(42,74): warning C4244:         [
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(42,74): warning C4244:             t=int
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(42,74): warning C4244:         ]
-  (компиляция исходного файла "main.cpp")
-  
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(42,67): warning C4244: аргумент: преобразование "float" в "t", возможна потеря данных
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(42,67): warning C4244:         with
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(42,67): warning C4244:         [
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(42,67): warning C4244:             t=int
-C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(42,67): warning C4244:         ]
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(25,67): warning C4244: аргумент: преобразование "float" в "t", возможна потеря данных
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(25,67): warning C4244:         with
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(25,67): warning C4244:         [
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(25,67): warning C4244:             t=int
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\geometry.h(25,67): warning C4244:         ]
   (компиляция исходного файла "main.cpp")
   
   model.cpp
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\model.cpp(87,67): warning C4244: аргумент: преобразование "t" в "t", возможна потеря данных
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\model.cpp(87,67): warning C4244:         with
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\model.cpp(87,67): warning C4244:         [
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\model.cpp(87,67): warning C4244:             t=float
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\model.cpp(87,67): warning C4244:         ]
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\model.cpp(87,67): warning C4244:         and
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\model.cpp(87,67): warning C4244:         [
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\model.cpp(87,67): warning C4244:             t=int
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\model.cpp(87,67): warning C4244:         ]
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\model.cpp(87,29): warning C4244: аргумент: преобразование "t" в "t", возможна потеря данных
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\model.cpp(87,29): warning C4244:         with
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\model.cpp(87,29): warning C4244:         [
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\model.cpp(87,29): warning C4244:             t=float
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\model.cpp(87,29): warning C4244:         ]
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\model.cpp(87,29): warning C4244:         and
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\model.cpp(87,29): warning C4244:         [
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\model.cpp(87,29): warning C4244:             t=int
+C:\Users\Варя\source\repos\CompGraphic\CompGraphic\model.cpp(87,29): warning C4244:         ]
   tgaimage.cpp
   Создание кода...
   CompGraphic.vcxproj -> C:\Users\Варя\source\repos\CompGraphic\x64\Debug\CompGraphic.exe
