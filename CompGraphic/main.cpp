@@ -12,13 +12,12 @@
 const TGAColor white = TGAColor(255, 255, 255, 255);
 const TGAColor red = TGAColor(255, 0, 0, 255);
 const TGAColor green = TGAColor(0, 255, 0, 255);
-const TGAColor ice_color = TGAColor(180, 220, 255, 180); // Полупрозрачный голубой
+const TGAColor ice_color = TGAColor(180, 220, 255, 180); 
 
 Model* model = NULL;
 const int width = 800;
 const int height = 800;
 
-// Функция смешивания цветов
 TGAColor blend_colors(const TGAColor& bg, const TGAColor& fg) {
     float alpha = fg.a / 255.0f;
 
@@ -29,7 +28,6 @@ TGAColor blend_colors(const TGAColor& bg, const TGAColor& fg) {
     return TGAColor(r, g, b, 255);
 }
 
-// Функция для рисования треугольника с поддержкой прозрачности
 void triangle(Vec3i t0, Vec3i t1, Vec3i t2, Vec2i uv0, Vec2i uv1, Vec2i uv2,
     TGAImage& image, float intensity, float* zbuffer,
     bool is_transparent = false, TGAColor transparent_color = TGAColor(255, 255, 255, 255),
@@ -84,7 +82,6 @@ void triangle(Vec3i t0, Vec3i t1, Vec3i t2, Vec2i uv0, Vec2i uv1, Vec2i uv2,
             int idx = x + y * width;
 
             if (is_transparent) {
-                // Для прозрачной грани (передней)
                 if (zbuffer[idx] < z) {
                     zbuffer[idx] = z;
 
@@ -93,15 +90,12 @@ void triangle(Vec3i t0, Vec3i t1, Vec3i t2, Vec2i uv0, Vec2i uv1, Vec2i uv2,
                     color_with_intensity.g = (unsigned char)(transparent_color.g * intensity);
                     color_with_intensity.b = (unsigned char)(transparent_color.b * intensity);
 
-                    // Получаем текущий цвет пикселя (объект или задняя грань)
                     TGAColor current_color = image.get(x, y);
-                    // Смешиваем с прозрачным цветом
                     TGAColor blended = blend_colors(current_color, color_with_intensity);
                     image.set(x, y, blended);
                 }
             }
             else if (model) {
-                // Для объекта
                 if (zbuffer[idx] < z) {
                     zbuffer[idx] = z;
 
@@ -114,7 +108,6 @@ void triangle(Vec3i t0, Vec3i t1, Vec3i t2, Vec2i uv0, Vec2i uv1, Vec2i uv2,
                 }
             }
             else {
-                // Для непрозрачной грани куба (задней)
                 if (zbuffer[idx] < z) {
                     zbuffer[idx] = z;
 
@@ -130,26 +123,23 @@ void triangle(Vec3i t0, Vec3i t1, Vec3i t2, Vec2i uv0, Vec2i uv1, Vec2i uv2,
     }
 }
 
-// Вершины куба
 std::vector<Vec3f> cube_vertices = {
-    Vec3f(-1.4f, -1.4f, -1.4f), // 0 - задняя нижняя левая
-    Vec3f(1.4f, -1.4f, -1.4f), // 1 - задняя нижняя правая
-    Vec3f(1.4f,  1.4f, -1.4f), // 2 - задняя верхняя правая
-    Vec3f(-1.4f,  1.4f, -1.4f), // 3 - задняя верхняя левая
-    Vec3f(-1.4f, -1.4f,  1.4f), // 4 - передняя нижняя левая
-    Vec3f(1.4f, -1.4f,  1.4f), // 5 - передняя нижняя правая
-    Vec3f(1.4f,  1.4f,  1.4f), // 6 - передняя верхняя правая
-    Vec3f(-1.4f,  1.4f,  1.4f)  // 7 - передняя верхняя левая
+    Vec3f(-1.4f, -1.4f, -1.4f), 
+    Vec3f(1.4f, -1.4f, -1.4f), 
+    Vec3f(1.4f,  1.4f, -1.4f), 
+    Vec3f(-1.4f,  1.4f, -1.4f), 
+    Vec3f(-1.4f, -1.4f,  1.4f), 
+    Vec3f(1.4f, -1.4f,  1.4f), 
+    Vec3f(1.4f,  1.4f,  1.4f), 
+    Vec3f(-1.4f,  1.4f,  1.4f) 
 };
 
-// Грани куба с указанием, какие являются передними (ближе к камере)
 struct CubeFace {
-    std::vector<int> indices; // индексы вершин (3 или 4 вершины)
-    bool is_front; // true = передняя грань (ближе к камере)
-    Vec3f normal; // нормаль грани
+    std::vector<int> indices;
+    bool is_front; 
+    Vec3f normal; 
 };
 
-// Вычисление нормали грани
 Vec3f calculate_face_normal(const std::vector<Vec3f>& vertices, const std::vector<int>& indices) {
     if (indices.size() < 3) return Vec3f(0, 0, 1);
 
@@ -162,49 +152,36 @@ Vec3f calculate_face_normal(const std::vector<Vec3f>& vertices, const std::vecto
     return normal;
 }
 
-// Определяем, какие грани являются передними (направлены к камере)
 std::vector<CubeFace> get_cube_faces(const Camera& camera) {
     std::vector<CubeFace> faces;
 
-    // Все возможные грани куба (каждая - 2 треугольника)
     std::vector<std::pair<std::vector<int>, Vec3f>> raw_faces = {
-        // Задняя грань (z = -1.4)
         {{0, 1, 2, 3}, Vec3f(0, 0, -1)},
-        // Передняя грань (z = 1.4)
         {{4, 5, 6, 7}, Vec3f(0, 0, 1)},
-        // Левая грань (x = -1.4)
         {{0, 3, 7, 4}, Vec3f(-1, 0, 0)},
-        // Правая грань (x = 1.4)
         {{1, 2, 6, 5}, Vec3f(1, 0, 0)},
-        // Нижняя грань (y = -1.4)
         {{0, 1, 5, 4}, Vec3f(0, -1, 0)},
-        // Верхняя грань (y = 1.4)
         {{3, 2, 6, 7}, Vec3f(0, 1, 0)}
     };
 
-    // Вектор от центра грани к камере
     Vec3f camera_pos = camera.getEye();
 
     for (const auto& face : raw_faces) {
         CubeFace cube_face;
 
-        // Преобразуем квад в два треугольника
         const std::vector<int>& quad = face.first;
         cube_face.indices = { quad[0], quad[1], quad[2], quad[0], quad[2], quad[3] };
         cube_face.normal = face.second;
 
-        // Вычисляем центр грани
         Vec3f face_center(0, 0, 0);
         for (int idx : quad) {
             face_center = face_center + cube_vertices[idx];
         }
         face_center = face_center * (1.0f / quad.size());
 
-        // Вектор от центра грани к камере
         Vec3f to_camera = camera_pos - face_center;
         to_camera.normalize();
 
-        // Грань является передней, если ее нормаль направлена к камере
         float dot_product = cube_face.normal * to_camera;
         cube_face.is_front = (dot_product > 0.1f);
 
@@ -214,15 +191,11 @@ std::vector<CubeFace> get_cube_faces(const Camera& camera) {
     return faces;
 }
 
-// Функция рендеринга куба с разделением на задние и передние грани
 void render_cube_with_layers(Camera& camera, TGAImage& image, float* zbuffer, Vec3f light_dir) {
-    // Получаем грани куба с классификацией на передние/задние
     std::vector<CubeFace> faces = get_cube_faces(camera);
 
-    // Сначала рендерим задние грани (непрозрачные)
     for (const auto& face : faces) {
         if (!face.is_front) {
-            // Рендерим два треугольника грани
             for (int tri = 0; tri < 2; tri++) {
                 Vec3i screen_coords[3];
                 Vec3f world_coords[3];
@@ -242,11 +215,9 @@ void render_cube_with_layers(Camera& camera, TGAImage& image, float* zbuffer, Ve
                     );
                 }
 
-                // Освещение для задней грани
                 float intensity = 0.6f + 0.2f * std::abs(face.normal * light_dir);
                 intensity = std::min(0.8f, std::max(0.5f, intensity));
 
-                // Рендерим как непрозрачную грань
                 triangle(screen_coords[0], screen_coords[1], screen_coords[2],
                     Vec2i(0, 0), Vec2i(0, 0), Vec2i(0, 0),
                     image, intensity, zbuffer, false, ice_color, nullptr);
@@ -254,17 +225,13 @@ void render_cube_with_layers(Camera& camera, TGAImage& image, float* zbuffer, Ve
         }
     }
 
-    // Затем рендерим передние грани (прозрачные) - они будут нарисованы позже, после объекта
-    // Мы просто сохраняем их для последующего рендеринга
 }
 
-// Функция рендеринга передних граней куба (после объекта)
 void render_front_cube_faces(Camera& camera, TGAImage& image, float* zbuffer, Vec3f light_dir) {
     std::vector<CubeFace> faces = get_cube_faces(camera);
 
     for (const auto& face : faces) {
         if (face.is_front) {
-            // Рендерим два треугольника грани
             for (int tri = 0; tri < 2; tri++) {
                 Vec3i screen_coords[3];
                 Vec3f world_coords[3];

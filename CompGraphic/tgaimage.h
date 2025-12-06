@@ -56,7 +56,6 @@ struct TGAColor {
 		return *this;
 	}
 
-	// Добавьте этот метод для удобства
 	unsigned char& operator[](const int i) {
 		return raw[i];
 	}
