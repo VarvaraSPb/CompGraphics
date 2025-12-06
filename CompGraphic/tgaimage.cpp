@@ -59,7 +59,7 @@ bool TGAImage::read_tga_file(const char* filename) {
 	}
 	width = header.width;
 	height = header.height;
-	bytespp = header.bitsperpixel >> 3;
+	bytespp = header.bitsperpixel >> 3; // from bit to byte
 	if (width <= 0 || height <= 0 || (bytespp != GRAYSCALE && bytespp != RGB && bytespp != RGBA)) {
 		in.close();
 		std::cerr << "bad bpp (or width/height) value\n";
