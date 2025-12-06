@@ -165,7 +165,7 @@ bool TGAImage::write_tga_file(const char* filename, bool rle) {
 	header.width = width;
 	header.height = height;
 	header.datatypecode = (bytespp == GRAYSCALE ? (rle ? 11 : 3) : (rle ? 10 : 2));
-	header.imagedescriptor = 0x20; // top-left origin
+	header.imagedescriptor = 0x20; 
 	out.write((char*)&header, sizeof(header));
 	if (!out.good()) {
 		out.close();
@@ -209,7 +209,6 @@ bool TGAImage::write_tga_file(const char* filename, bool rle) {
 	return true;
 }
 
-// TODO: it is not necessary to break a raw chunk for two equal pixels (for the matter of the resulting size)
 bool TGAImage::unload_rle_data(std::ofstream& out) {
 	const unsigned char max_chunk_length = 128;
 	unsigned long npixels = width * height;
@@ -341,7 +340,7 @@ bool TGAImage::scale(int w, int h) {
 		erry += h;
 		oscanline += olinebytes;
 		while (erry >= (int)height) {
-			if (erry >= (int)height << 1) // it means we jump over a scanline
+			if (erry >= (int)height << 1) 
 				memcpy(tdata + nscanline + nlinebytes, tdata + nscanline, nlinebytes);
 			erry -= height;
 			nscanline += nlinebytes;

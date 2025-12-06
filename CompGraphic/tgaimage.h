@@ -20,8 +20,6 @@ struct TGA_Header {
 };
 #pragma pack(pop)
 
-
-
 struct TGAColor {
 	union {
 		struct {
@@ -58,7 +56,6 @@ struct TGAColor {
 		return *this;
 	}
 };
-
 
 class TGAImage {
 protected:

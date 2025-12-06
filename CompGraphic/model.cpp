@@ -37,7 +37,7 @@ Model::Model(const char* filename) : verts_(), faces_(), norms_(), uv_() {
             Vec3i tmp;
             iss >> trash;
             while (iss >> tmp[0] >> trash >> tmp[1] >> trash >> tmp[2]) {
-                for (int i = 0; i < 3; i++) tmp[i]--; // in wavefront obj all indices start at 1, not zero
+                for (int i = 0; i < 3; i++) tmp[i]--; 
                 f.push_back(tmp);
             }
             faces_.push_back(f);
@@ -79,11 +79,19 @@ void Model::load_texture(std::string filename, const char* suffix, TGAImage& img
 }
 
 TGAColor Model::diffuse(Vec2i uv) {
-    return diffusemap_.get(uv.x, uv.y);
+    int u = std::max(0, std::min(diffusemap_.get_width() - 1, uv.x));
+    int v = std::max(0, std::min(diffusemap_.get_height() - 1, uv.y));
+    return diffusemap_.get(u, v);
 }
 
 Vec2i Model::uv(int iface, int nvert) {
     int idx = faces_[iface][nvert][1];
-    return Vec2i(uv_[idx].x * diffusemap_.get_width(), uv_[idx].y * diffusemap_.get_height());
+    int u = (int)(uv_[idx].x * (float)diffusemap_.get_width());
+    int v = (int)(uv_[idx].y * (float)diffusemap_.get_height());
+
+    u = std::max(0, std::min(diffusemap_.get_width() - 1, u));
+    v = std::max(0, std::min(diffusemap_.get_height() - 1, v));
+
+    return Vec2i(u, v);
 }
 
